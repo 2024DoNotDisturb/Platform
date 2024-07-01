@@ -1,0 +1,45 @@
+{% extends 'layouts/layout.html' %}
+{% block title %} 유온 Your Own {% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/account.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="account-page">
+    <div class="profile-management">
+        <h2>프로필 관리</h2>
+        <div class="profile-info">
+            <div class="profile-details">
+                <img src="{{ url_for('static', filename='src/default-profile-img.png') }}" alt="User Profile" class="profile-image">
+                <p class="profile-name">{{ flask_login.current_user.Username }}</p>
+
+                <div class="profile-input">
+                    <p class="profile-name">ID</p> <input id="input-id" type="text" placeholder="{{ flask_login.current_user.ID }}" disabled>
+                </div>
+                <div class="profile-input">
+                    <p class="profile-name">Password</p> <input id="input-password" type="text" placeholder="**********" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-save-buttons">
+            <button id="edit-button">Edit</button>
+            <button id="save-button" style="display: none;">Save</button>
+        </div>
+    </div>
+    
+    <div class="side-by-side">
+        <div class="subscription-management">
+            <h2>구독 관리</h2>
+        </div>
+        <div class="account-management">
+            <h2>계정 관리</h2>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/account.js') }}"></script>
+{% endblock %}

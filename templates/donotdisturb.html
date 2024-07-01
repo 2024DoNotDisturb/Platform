@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방해금지모드를 소개합니다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #000000;
+            color: #F2DF7E;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #F2DF7E, #000000);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem;
+        }
+        .header h1, .header p {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .content-div {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+            color: #000000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content-div p {
+            max-width: 90%;
+            line-height: 1.6;
+        }
+        .content-div:nth-child(1) {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        .content-div:nth-child(2) {
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.1s;
+        }
+        .content-div:nth-child(3) {
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.2s;
+        }
+        .h2-container {
+            background-color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 10px 6px -7px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #F28B30;
+            text-align: center;
+            font-size: 2em;
+            margin: 0;
+        }
+        .team-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-name i {
+            margin-left: 10px;
+            font-size: 1.8em;
+            color:#F2B035;
+        }
+        .important-word {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #000000;
+            margin: 1rem 0 0.5rem; /* 상단 마진은 그대로, 하단 마진을 줄임 */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-div p {
+            max-width: 90%;
+            line-height: 1.6;
+            margin-top: 0.5rem; /* p 태그의 상단 마진을 줄임 */
+        }
+        .important-word::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background-color: #F28B30;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+        }
+        .important-word:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* 홈 돌아가기 버튼 */
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.3s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #F28B30;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 50px;
+        }
+
+        .btn:hover {
+            background-color: #F2B035;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="team-name">TEAM <i class="fas fa-moon"></i> 방해금지모드 </h1>
+        <p>일과 삶의 경계를 바로잡고, 삶을 주도적으로 살아가다</p>
+    </div>
+    <div class="container">
+        <div class="content-div">
+            <div class="h2-container">
+                <h2>VISION</h2>
+            </div>
+            <p class="important-word">자립</p>
+            <p>누군가가 우리의 가치를 정해주는 것이 아닌 스스로 가치를 결정합니다.</p>
+        </div>
+        <div class="content-div">
+            <div class="h2-container">
+                <h2>MISSION</h2>
+            </div>
+            <p class="important-word"> 삶을 주도적으로 </p>
+            <p>우리는 일상 자동화를 원하지만, 시스템의 지배를 원하는 것은 아닙니다. <br>
+            사용자가 삶을 자기주도적으로 살아갈 수 있도록 돕습니다.</p>
+        </div>
+        <div class="content-div">
+            <div class="h2-container">
+                <h2>HOW TO WORK?</h2>
+            </div>
+            <p class="important-word">즐겁게 Entertain</p>
+            <p>우리는 생산자 Productor 이자 사용자 User 입니다. <br>
+            우리가 즐겁게 일하는 것이 사용자를 즐겁게 하는 일입니다.</p>
+            <p class="important-word">효율적으로 Efficiently</p>
+            <p>우리는 일 work 과 삶 life 의 경계를 중요하게 여깁니다. <br>
+            메모하고, 공유하고, 개선하여 문제를 효율적으로 해결합니다.</p>
+            <p class="important-word">기초부터 Basic</p>
+            <p>실수는 무지와 자만에서 나옵니다. <br>
+            우리는 문제의 원인을 기초에서부터 찾아보고, 함께 공부해 나갑니다.</p>
+        </div>
+    </div>
+    <div class="btn-container">
+        <a href="{{url_for('home')}}" class="btn">홈으로 돌아가기</a>
+    </div>
+</body>
+</html>

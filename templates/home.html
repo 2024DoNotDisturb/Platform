@@ -1,0 +1,38 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} 유온 Your Own {% endblock %}
+{% block styles %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+<!-- 내용 추가 -->
+{% block content %}
+<main>
+    <div class="button-grid">
+        <button class="large-button"></button>
+        <button class="robot-btn"></button>
+        <button class="routine-btn"></button>
+        <div class="user-profile">
+                <div class="profile-image-container">
+                    <img src="{{ url_for('static', filename='src/default-profile-img.png') }}" alt="User Profile" class="profile-image">
+                </div>
+                <p class="profile-name">{{ flask_login.current_user.Username }}</p>
+                <div class="user-title-container">
+                    <span class="first-name">{{ flask_login.current_user.user_profile[0].FirstName}}</span>
+                    <span class="second-name">{{ flask_login.current_user.user_profile[0].LastName }}</span>
+                </div>
+        </div>
+        <a href="{{url_for('error')}}"><button class="wait-btn"></button></a>
+        <a href="{{url_for('donotdisturb')}}"><button class="teamintro-btn"></button></a>
+        <a href="{{url_for('introdeveloper')}}"><button class="developintro-btn"></button></a>
+        <a href="{{url_for('introservice')}}"><button class="serviceintro-btn"></button></a>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

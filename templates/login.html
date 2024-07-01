@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform Login</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="sign-up-container">
+      <form method="POST" action="/register">
+        <h1>Create Account</h1>
+        <div class="social-links">
+          <div>
+            <a hre="{{url_for('google_login')}}"><i class="fa fa-google" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <span>or use your email for registration</span>
+        <input type="text" name="name" placeholder="Name">
+        <div class="input-container">
+          <input type="text" name="join_id" id="join_id" placeholder="ID(특수문자 X, 6자 이상)" style="width: 100%;">
+          <button type="button" id="checkIdBtn">중복확인</button>
+        </div>
+        <span class="material-icons icon" id="idCheckIcon"></span>
+        <div id="idFeedback" class="feedback"></div>
+        <input type="password" name="join_pwd" id="join_pwd" placeholder="PWD(8~20자, 문자/숫자/특수문자)">
+        <div id="pwdFeedback" class="feedback"></div>
+        <input type="date" name="birth" min="1900-01-01" id="birthDate" required>
+        <input type="tel" name="phone" oninput="hypenTel(this)" maxlength="13" placeholder="Phone">
+        <input type="email" name="email" placeholder="email">
+        <div class="postcode-container">
+          <input type="text" name="postcode" id="sample6_postcode" disabled placeholder="우편번호">
+          <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+        </div>
+        <input type="text" name="address" id="sample6_address" ≈ placeholder="주소">
+        <input type="text" name="address2" id="sample6_detailAddress" placeholder="상세주소">
+        <input type="text" name="address3" id="sample6_extraAddress" disabled placeholder="참고항목">
+        <button class="form_btn">Sign Up</button>
+      </form>
+    </div>
+    <div class="sign-in-container">
+      <form method="POST" action="/login">
+        <h1>Sign In</h1>
+        <div class="social-links">
+          <div>
+            <a href="{{ url_for('google_login')}}"><i class="fa fa-google" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <span>or use your account</span>
+        <input type="text" placeholder="ID" name="id" />
+        <input type="password" placeholder="Password" name="password" />
+        <button class="form_btn">Sign In</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay-left">
+        <h1>Welcome!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button id="signIn" class="overlay_btn">Sign In</button>
+      </div>
+      <div class="overlay-right">
+        <h1>Hello, Friend</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button id="signUp" class="btn-open-modal">Sign Up</button>
+        <!-- <button id="signUp" class="overlay_btn">Sign Up</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 개인정보동의 모달 -->
+<div class="modal" id="termsOfUseModal">
+  <div class="modal_body">
+      <h2>이용약관</h2>
+      <div class="modal_content">
+        <pre id="termsOfUseContent">내용을 불러오는 중...</pre>
+      </div>
+
+      <h2>개인정보 처리방침</h2>
+      <div class="modal_content">
+        <pre id="personalInformationContent">내용을 불러오는 중...</pre>
+      </div>
+      
+      <div>
+        <button type="button" class="submit_modal"> 전체 동의</button>
+        <button type="button" class="close_modal">취소</button>
+      </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+<!-- Kakao postcode API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</body>
+</html>

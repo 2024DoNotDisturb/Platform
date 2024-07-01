@@ -1,0 +1,105 @@
+/* account.css */
+.account-page {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 2rem; /* 각 섹션 사이의 간격 조정 */
+    padding: 2rem; /* 위쪽 여백 추가 */
+    height: 80vh;
+}
+
+.profile-management {
+    flex: 1; /* 프로필 관리 섹션을 확장하여 남은 공간을 차지하도록 설정 */
+    background-color: #f2f2f2;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+.profile-management:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.side-by-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 세로로 배치된 블럭 사이의 간격 조정 */
+    flex: 1; /* 남은 공간을 차지하도록 설정 */
+}
+
+.subscription-management,
+.account-management {
+    background-color: #f2f2f2;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 36vh;
+}
+
+.subscription-management:hover,
+.account-management:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.profile-image {
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.profile-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* margin-bottom: 0.5rem; */
+}
+
+.profile-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.profile-input p {
+    margin-right: 0.5rem;
+}
+
+.profile-details input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.profile-details input[type="text"]:focus {
+    outline: none;
+    border-color: #f28b30;
+}

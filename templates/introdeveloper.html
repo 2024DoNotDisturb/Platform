@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방해금지모드 엔지니어</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #000000;
+            color: #F2DF7E;
+            margin: 0;
+            padding: 0;
+        }
+
+        .team-name i {
+            margin-left: 10px;
+            font-size: 1.8em;
+            color:#F2B035;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #F2DF7E, #000000);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 2rem;
+        }
+        .header h1, .header p {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .developer-div {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+            color: #000000;
+            display: flex;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        .developer-image {
+            width: 150px;
+            height: auto;
+            margin-right: 2rem;
+        }
+        .developer-info {
+            flex: 1;
+        }
+        .developer-name {
+            color: #F28B30;
+            font-size: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+        .developer-description {
+            line-height: 1.6;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-in forwards;
+            animation-delay: 0.3s;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #F28B30;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 50px;
+        }
+        .btn:hover {
+            background-color: #F2B035;
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-link {
+            display: inline-block;
+            margin-right: 10px;
+            color: #F28B30;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-link:hover {
+            color: #F2B035;
+        }
+        .social-link i {
+            margin-right: 5px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="team-name"> DEVELOPER <i class="fas fa-moon"></i> 방해금지모드 </h1>
+        <p>우리의 개발자를 소개합니다 !</p>
+    </div>
+    <div class="container">
+        <div class="developer-div">
+            <img src="../static/src/yoonjeong.jpeg" alt="개발자 1" class="developer-image">
+            <div class="developer-info">
+                <h3 class="developer-name">YOONJEONG KIM</h3>
+                <p class="developer-description">
+                    안녕하세요, <b>팀장 김윤정</b>입니다. 방해금지모드를 <b>기획하고 FE 개발</b>했습니다. <br>
+                    열정적인 팀원들을 만나 대학의 마지막 여름을 더욱 뜨겁게 보낼 수 있었습니다. 🍀 <br>
+                    이번 프로젝트가 끝이 아닌 첫 도약이 될 수 있도록 정진하겠습니다.
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/kingodjerry" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                    <a href="https://devmola.tistory.com/" class="social-link" target="_blank">
+                        <i class="fas fa-blog"></i>Devlog
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="developer-div">
+            <img src="../static/src/jihyun.jpeg" alt="개발자 2" class="developer-image">
+            <div class="developer-info">
+                <h3 class="developer-name">JIHYUN LEE</h3>
+                <p class="developer-description">
+                    안녕하세요, <b>개발자 이지현</b>입니다!  <br> 
+                    <b>백엔드와 프론트엔드</b>를 맡아 프로젝트를 진행하였습니다. 감사합니다. 😊
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com//jh226" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="developer-div">
+            <img src="./static/src/taeyang.jpeg" alt="개발자 3" class="developer-image">
+            <div class="developer-info">
+                <h3 class="developer-name">TAEYANG YU</h3>
+                <p class="developer-description">
+                    안녕하세요, <b>팀원 유태양</b>입니다. 저는 <b>임베디드 시스템 개발</b>을 담당했습니다. <br>
+                    항상 새로운 도전을 즐기며, 최선을 다해 일하고 있습니다. 🥵
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/IAMYUTAEYANG" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-container">
+        <a href="{{url_for('home')}}" class="btn">홈으로 돌아가기</a>
+    </div>
+</body>
+</html>

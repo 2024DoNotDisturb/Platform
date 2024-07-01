@@ -1,0 +1,237 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #131419;
+}
+
+/* 헤더 */ 
+header {
+    background-color: #131419;
+    color: white;
+    font-weight: 600;
+    font-style: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1em 2em; */
+}
+
+.logo-image {
+    height: 7em;
+    width: 16em;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gentleShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 80%;
+    height: 80vh;
+}
+
+.button-grid button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    position: relative;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.button-grid button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+    animation-fill-mode: none;
+}
+
+/* 호버 시 버튼 확장 */
+.robot-btn:hover, .routine-btn:hover { 
+    transform: scaleY(1.5);
+    transform-origin: bottom;
+    z-index: 1; 
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.teamintro-btn:hover, .developintro-btn:hover, .serviceintro-btn:hover { 
+    transform: scaleY(1.5);
+    transform-origin: top;
+    z-index: 1; 
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+}
+
+/* 마이페이지 버튼 */
+.large-button {
+    grid-column: span 1;
+    grid-row: span 2;
+    background-image: url(../src/mypage-btn.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    animation-delay: 0s;
+    animation: gentleShake 0.3s ease-in;
+}
+
+/* 마이페이지 버튼은 호버 시 확장이 없음 */
+.large-button:hover {
+    background-image: url(../src/mypage-btn-hover.png);
+}
+
+/* 로봇 서비스 버튼 */
+.robot-btn {
+    background-image:url(../src/robot-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.1s;
+}
+
+/* 스마트 루틴 서비스 버튼 */
+.routine-btn {
+    background-image: url(../src/routine-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.2s;
+}
+
+/* 서비스 연결 대기 버튼 */
+.wait-btn {
+    background-image: url(../src/wait-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.3s;
+}
+
+.wait-btn:hover {
+    background-image: url(../src/wait-btn-hover.png);
+}
+
+/* 팀 소개 페이지 버튼 */
+.teamintro-btn {
+    background-image: url(../src/teamintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.4s;
+}
+
+/* 개발자 소개 페이지 버튼 */
+.developintro-btn {
+    background-image: url(../src/developintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.5s;
+}
+
+/* 서비스 소개 페이지 버튼 */
+.serviceintro-btn {
+    background-image: url(../src/serviceintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.6s;
+}
+
+/* 사용자 프로필 */
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.user-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-name, .second-name {
+    display: inline-block;
+    margin: 0 2px; /* 칭호 사이의 간격 조절 */
+}
+
+/* .user-profile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+} */
+
+/* 로그아웃 버튼 */
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 300;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-btn:hover {
+    color: #F2B035;
+}
+
+/* 푸터 */
+footer {
+    background-color: #131419;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-style: normal;
+}

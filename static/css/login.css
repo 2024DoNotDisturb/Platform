@@ -1,0 +1,312 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #131419;
+  overflow: hidden;
+}
+.container {
+  border-radius: 10px;
+  box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05),
+    5px 5px 15px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 768px;
+  min-height: 480px;
+  overflow: hidden;
+}
+form {
+  background: #131419;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+form input, #title {
+  color: #f28b30;
+  background: #131419;
+  padding: 16px;
+  margin: 8px 0;
+  width: 85%;
+  border: 0;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+button {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 15px 45px;
+  margin: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 80ms ease-in;
+}
+.form_btn {
+  background: #131419;
+  color: #f28b30;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.05), 2px 2px 6px rgba(0, 0, 0, 0.8)
+}
+.form_btn:active {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+.overlay_btn {
+  background-color: #F28B30;
+  color: #fff;
+  box-shadow: -5px -5px 10px #ffa250, 5px 5px 8px #ffa250;
+}
+.sign-in-container {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  transition: all 0.5s;
+}
+.sign-up-container {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 95%;
+  opacity: 0;
+  transition: all 0.5s;
+  overflow-y: auto;
+  padding-top: 55%;
+}
+.overlay-left {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  background-color: #F28B30;
+  color: #fff;
+  transition: all 0.5s;
+}
+.overlay-right {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #F28B30;
+  color: #fff;
+  transition: all 0.5s;
+}
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 2;
+}
+.container.right-panel-active .overlay-right {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.container.right-panel-active .overlay-left {
+  transform: translateX(-100%);
+  opacity: 1;
+  z-index: 2;
+}
+.social-links {
+  margin: 20px 0;
+}
+form h1 {
+  font-weight: bold;
+  margin: 0;
+  color: #c7c7c7;
+}
+
+p {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+span {
+  font-size: 12px;
+  color: #c7c7c7;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+.social-links div {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  border-radius: 50%;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.05), 2px 2px 6px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+.social-links a {
+  color: #c7c7c7;
+}
+.social-links div:active {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.postcode-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  width: 85%;
+}
+.postcode-container input[type="button"] {
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.05), 
+              2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+.postcode-container input[type="button"]{
+  width: 100px;
+}
+
+input[type="date"]{
+  color: #c7c7c7;
+  background: #131419;
+  padding: 16px;
+  margin: 8px 0;
+  width: 85%;
+  border: 0;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(62%) sepia(38%) saturate(2064%) hue-rotate(326deg) brightness(104%) contrast(105%);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  filter: invert(69%) sepia(81%) saturate(5350%) hue-rotate(352deg) brightness(104%) contrast(101%);
+}
+
+.btn-open-modal {
+  background-color: #F28B30;
+  color: #fff;
+  box-shadow: -5px -5px 10px #ffa250, 5px 5px 8px #ffa250;
+}
+
+.modal{
+  display: none;
+}
+
+.modal .modal_body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  width: 80%;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.modal_content {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+
+.modal .modal_body .button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal .modal_body .close_modal,
+.modal .modal_body .submit_modal {
+  display: inline-block;
+  width: 45%;
+  padding: 10px 0;
+  background-color: rgb(116, 0, 0);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border: solid black 3px;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+  width: 85%;
+}
+.input-container input {
+  flex-grow: 1;
+  padding-right: 60px;
+}
+.input-container button {
+  position: absolute;
+  right: 0px;
+  top: 30%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  color: #f28b30;
+  background: #131419;
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05),
+  inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.input-container .icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.material-icons.icon {
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  display: none;
+}
+
+.feedback {
+  font-size: 0.8em;
+  color: red;
+  margin-top: 5px;
+}
