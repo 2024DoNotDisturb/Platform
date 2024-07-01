@@ -1,19 +1,19 @@
 class Config:
     user = "root"
-    password = "12345678"
-    host = "127.0.0.1"
+    password = "wsu1234!"
+    host = "10.101.84.248"
     port = "3306"
     database = "platform"
 
-    #Maria db
-    # SQLALCHEMY_DATABASE_URI = (
-    #     f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
-    # )
-
-    #mysql
+    # Maria db
     SQLALCHEMY_DATABASE_URI = (
-        f"mysql://{user}:{password}@{host}:{port}/{database}"
+        f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
     )
+
+    # #mysql
+    # SQLALCHEMY_DATABASE_URI = (
+    #     f"mysql://{user}:{password}@{host}:{port}/{database}"
+    # )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'smartplatform'

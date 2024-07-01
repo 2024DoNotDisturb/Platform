@@ -79,5 +79,5 @@ urllib3==2.2.2
 ushlex==0.99.1
 virtualenv==20.26.2
 websocket-client==1.6.4
-Werkzeug==2.3.6
+Werkzeug==2.2.2
 zipp==3.17.0
