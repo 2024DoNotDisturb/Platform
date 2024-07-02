@@ -1,0 +1,56 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %}관리자 대시보드{% endblock %}
+<!-- 내용 추가 -->
+{% block content %}
+<main>
+    <section id="graph-container">
+        <div class="graph-item">
+            <h2>서비스별 구독자 추이</h2>
+            <div class="controls">
+                <label for="serviceSelect">서비스 선택:</label>
+                <select id="serviceSelect"></select>
+                <select id="daysSelect">
+                    <option value="7">7일</option>
+                    <option value="30" selected>30일</option>
+                    <option value="90">90일</option>
+                </select>
+                <label for="startDate">시작일:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">종료일:</label>
+                <input type="date" id="endDate">
+                <button id="updateChart">차트 업데이트</button>
+            </div>
+            <canvas id="subscriptionTrendChart" width="400px" height="400px"></canvas>
+        </div>
+
+        <div class="graph-item">
+            <h2>일일 활성 사용자</h2>
+            <canvas id="active-users-graph" width="400px" height="400px"></canvas>
+        </div>
+
+        <div class="graph-item">
+            <h2>일일 서비스 사용량</h2>
+            <canvas id="service-usage-graph" width="400px" height="400px"></canvas>
+        </div>
+
+        <div class="graph-item">
+            <h2>연령대별 사용자 분포</h2>
+            <canvas id="ageDistributionChart" width="400px" height="400px"></canvas>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+<!-- 추가 CSS 예시 -->
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+<!-- 추가 JavaScript 예시 -->
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

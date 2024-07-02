@@ -5,30 +5,8 @@ body {
     background-color: #131419;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 100vh;
     color: #f1f1f1;
-}
-
-h1 {
-    margin: 0;
-    font-size: 2.5em;
-    letter-spacing: 1px;
-}
-
-main {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-#graph-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 25px;
-    height: calc(100vh - 140px); /* 헤더와 푸터 높이를 고려하여 조정 */
 }
 
 .graph-item {
@@ -37,7 +15,6 @@ main {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: transform 0.3s ease;
-    overflow: hidden;
 }
 
 .graph-item:hover {
@@ -49,12 +26,20 @@ h2 {
     margin-top: 0;
     font-size: 1.5em;
     margin-bottom: 20px;
+    text-align: center;
+}
+#graph-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1.2fr 1fr 1fr;
+    gap: 25px;
+    height: calc(100vh - 140px); /* 헤더와 푸터 높이를 고려하여 조정 */
 }
 
-/* 서비스별 구독자 추이 (좌측 전체, 더 크게) */
+/* 서비스별 구독자 추이 (좌측 상단, 더 크게) */
 .graph-item:nth-child(1) {
     grid-column: 1;
-    grid-row: 1 / 4;
+    grid-row: 1 / 3;
 }
 
 /* 일일 활성 사용자 (우측 상단, 작게) */
@@ -69,18 +54,24 @@ h2 {
     grid-row: 2;
 }
 
-/* 연령대별 사용자 분포 (우측 하단) */
+/* 연령대별 사용자 분포 (하단 전체) */
 .graph-item:nth-child(4) {
-    grid-column: 2;
+    grid-column: 1 / 3;
     grid-row: 3;
 }
-
 .controls {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 15px;
+    color: #131419;
     flex-wrap: nowrap; /* 한 줄로 강제 정렬 */
+}
+
+.controls label {
+    font-family: sans-serif;
+    font-size: 14px;
+    align-items: center;
 }
 
 select, input[type="date"], button {
@@ -91,7 +82,7 @@ select, input[type="date"], button {
     background-color: #454545;
     color: #f1f1f1;
     font-size: 11px; /* 폰트 크기 줄임 */
-    height: 30px; /* 높이 줄임 */
+    height: 25px; /* 높이 줄임 */
     flex: 0 1 auto; /* flex-grow: 0, flex-shrink: 1, flex-basis: auto */
 }
 
@@ -124,21 +115,19 @@ canvas {
 
 /* 메인 그래프(서비스별 구독자 추이)의 캔버스 크기 조정 */
 .graph-item:nth-child(1) canvas {
-    height: calc(100% - 80px); /* 그래프 아이템 내부 여백 고려 */
+    height: calc(100vh - 200px); /* 뷰포트 높이에 따라 조정 */
 }
 
 /* 작은 그래프들의 캔버스 크기 조정 */
 .graph-item:nth-child(2) canvas,
 .graph-item:nth-child(3) canvas,
 .graph-item:nth-child(4) canvas {
-    height: calc(100% - 80px); /* 그래프 아이템 내부 여백 고려 */
+    height: calc((100vh - 200px) / 3); /* 메인 그래프 높이의 1/3 */
 }
-
 
 @media (max-width: 1024px) {
     #graph-container {
         grid-template-columns: 1fr;
-        height: auto;
     }
 
     .graph-item:nth-child(1),

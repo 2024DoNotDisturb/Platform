@@ -30,6 +30,8 @@ class User(db.Model, flask_login.UserMixin):
 
     # User와 UserProfiles 간의 관계 설정
     user_profile = relationship('UserProfiles', back_populates='user', primaryjoin="User.UserID == UserProfiles.UserID", lazy='joined')
+    # ServiceUsage와의 관계 설정
+    service_usages = relationship('ServiceUsage', back_populates='user')
 
     def get_id(self):
         return self.ID
@@ -56,6 +58,11 @@ class AIServices(db.Model):
     ServiceName = Column(String(255), unique=True, nullable=False)
     Description = Column(Text)
     Endpoint = Column(String(255), nullable=False)
+    
+    # UserServices와의 관계 설정
+    user_services = relationship('UserServices', back_populates='ai_service')
+    # ServiceUsage와의 관계 설정
+    service_usages = relationship('ServiceUsage', back_populates='ai_service')
 
 # 유저 서비스 테이블
 class UserServices(db.Model):
@@ -65,6 +72,9 @@ class UserServices(db.Model):
     ServiceID = Column(Integer, ForeignKey('AIServices.ServiceID'), nullable=False)
     SubscriptionDate = Column(TIMESTAMP, server_default=db.func.current_timestamp())
     Status = Column(Enum('active', 'inactive', 'canceled', name='subscription_status'), default='active')
+    
+    # AIServices와의 관계 설정
+    ai_service = relationship('AIServices', back_populates='user_services')
 
 # 서비스 사용 테이블
 class ServiceUsage(db.Model):
@@ -75,6 +85,11 @@ class ServiceUsage(db.Model):
     UsageDate = Column(TIMESTAMP, server_default=db.func.current_timestamp())
     UsageDetail = Column(Text)
     UsageAmount = Column(Integer)
+
+    # AIServices와의 관계 설정
+    ai_service = relationship('AIServices', back_populates='service_usages')
+    # User와의 관계 설정
+    user = relationship('User', back_populates='service_usages')
 
 # 알림 테이블
 class Notifications(db.Model):

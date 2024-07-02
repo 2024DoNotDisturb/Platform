@@ -6,6 +6,7 @@ import bcrypt
 import ssl
 from model.model import User, UserProfiles, UserRoles, Roles, Permissions, db, Session
 from model.google import init_google_oauth
+from dashboard import dashboard  # 대시보드 Blueprint 임포트
 
 # SSL 검증 비활성화
 if getattr(ssl, '_create_unverified_context', None):
@@ -227,7 +228,7 @@ def account():
 
 @app.route('/error')
 def error():
-    return flask.render_template('error.html')
+    return flask.render_template('dashboard.html')
 
 @app.route('/donotdisturb')
 def donotdisturb():
@@ -240,6 +241,9 @@ def introdeveloper():
 @app.route('/introservice')
 def introservice():
     return flask.render_template('introservice.html')
+
+# 대시보드 Blueprint 등록
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 
 if __name__ == '__main__':
     app.run(debug=app.config['DEBUG'])
