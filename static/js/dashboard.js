@@ -227,7 +227,11 @@ function drawDailyServiceUsageGraph(data) {
                   display: true,
                   text: '일일 서비스 사용량'
               }
-          }
+          },
+          ticks: {
+            stepSize: 1,
+            precision: 0
+        }
       }
   });
 }
