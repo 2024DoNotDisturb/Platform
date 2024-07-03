@@ -8,35 +8,40 @@
         <div class="graph-item">
             <h2>서비스별 구독자 추이</h2>
             <div class="controls">
-                <label for="serviceSelect">서비스 선택:</label>
-                <select id="serviceSelect"></select>
-                <select id="daysSelect">
-                    <option value="7">7일</option>
-                    <option value="30" selected>30일</option>
-                    <option value="90">90일</option>
-                </select>
-                <label for="startDate">시작일:</label>
-                <input type="date" id="startDate">
-                <label for="endDate">종료일:</label>
-                <input type="date" id="endDate">
+                <div>
+                    <label for="serviceSelect">서비스 선택:</label>
+                    <select id="serviceSelect"></select>
+                    <select id="daysSelect">
+                        <option value="7">7일</option>
+                        <option value="30" selected>30일</option>
+                        <option value="90">90일</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="startDate">시작일:</label>
+                    <input type="date" id="startDate">
+                    <label for="endDate">종료일:</label>
+                    <input type="date" id="endDate">
+                </div>
                 <button id="updateChart">차트 업데이트</button>
             </div>
-            <canvas id="subscriptionTrendChart" width="400px" height="400px"></canvas>
+            <canvas id="subscriptionTrendChart"></canvas>
         </div>
+
 
         <div class="graph-item">
             <h2>일일 활성 사용자</h2>
-            <canvas id="active-users-graph" width="400px" height="400px"></canvas>
+            <canvas id="active-users-graph"></canvas>
         </div>
 
         <div class="graph-item">
             <h2>일일 서비스 사용량</h2>
-            <canvas id="service-usage-graph" width="400px" height="400px"></canvas>
+            <canvas id="service-usage-graph"></canvas>
         </div>
 
         <div class="graph-item">
             <h2>연령대별 사용자 분포</h2>
-            <canvas id="ageDistributionChart" width="400px" height="400px"></canvas>
+            <canvas id="ageDistributionChart"></canvas>
         </div>
     </section>
 </main>

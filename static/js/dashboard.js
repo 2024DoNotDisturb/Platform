@@ -34,6 +34,7 @@ function generateDateRange(endDate, days) {
   return dates;
 }
 
+
 function processChartData(data, days) {
   const endDate = new Date();
   const dateRange = generateDateRange(endDate, days);
@@ -51,58 +52,69 @@ function processChartData(data, days) {
 function drawChart(data, serviceName, days) {
   const ctx = document.getElementById('subscriptionTrendChart').getContext('2d');
   if (chart) {
-    chart.destroy();
+      chart.destroy();
   }
 
   const processedData = processChartData(data, days);
   chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: processedData.map(item => item.date),
-      datasets: [
-        {
-          label: 'Canceled',
-          data: processedData.map(item => item.canceled),
-          backgroundColor: 'rgb(255, 99, 132)',
-        },
-        {
-          label: 'Inactive',
-          data: processedData.map(item => item.inactive),
-          backgroundColor: 'rgb(255, 205, 86)',
-        },
-        {
-          label: 'Active',
-          data: processedData.map(item => item.active),
-          backgroundColor: 'rgb(75, 192, 192)',
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: `${serviceName} 구독자 추이 (최근 ${days}일)`
-        }
+      type: 'line',
+      data: {
+          labels: processedData.map(item => item.date),
+          datasets: [
+              {
+                  label: '활성화 후 구독 취소',
+                  data: processedData.map(item => item.canceled),
+                  backgroundColor: '#DF0101',
+                  borderColor: '#DF0101',
+                  fill: false,
+                  tension: 0.1
+              },
+              {
+                  label: '구독 비활성화',
+                  data: processedData.map(item => item.inactive),
+                  backgroundColor: '#6E6E6E',
+                  borderColor: '#6E6E6E',
+                  fill: false,
+                  tension: 0.1
+              },
+              {
+                  label: '구독 활성화',
+                  data: processedData.map(item => item.active),
+                  backgroundColor: '#F28B30',
+                  borderColor: '#F28B30',
+                  fill: true,
+                  tension: 0.1
+              }
+          ]
       },
-      scales: {
-        x: {
-          stacked: true,
-          title: {
-            display: true,
-            text: '날짜'
-          }
-        },
-        y: {
-          stacked: true,
-          title: {
-            display: true,
-            text: '구독자 수'
+      options: {
+          responsive: true,
+          plugins: {
+              title: {
+                  display: true,
+                  text: `${serviceName} 구독자 추이 (최근 ${days}일)`
+              }
           },
-          beginAtZero: true
-        }
+          scales: {
+              x: {
+                  title: {
+                      display: true,
+                      text: '날짜'
+                  }
+              },
+              y: {
+                  title: {
+                      display: true,
+                      text: '구독자 수'
+                  },
+                  beginAtZero: true,
+                  ticks: {
+                      stepSize: 1,
+                      precision: 0
+                  }
+              }
+          }
       }
-    }
   });
 }
 
@@ -131,102 +143,92 @@ async function getDailyServiceUsage() {
 function drawDailyActiveUsersGraph(data) {
   const ctx = document.getElementById('active-users-graph').getContext('2d');
   if (activeUsersChart) {
-    activeUsersChart.destroy();
+      activeUsersChart.destroy();
   }
 
+  const activeUsers = data.active_user_ratio;
+  const inactiveUsers = 1 - activeUsers;
+
   activeUsersChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: [data.date],
-      datasets: [{
-        label: '활성 사용자 비율',
-        data: [data.active_user_ratio],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 1,
-          ticks: {
-            callback: function(value) {
-              return (value * 100).toFixed(0) + '%';
-            }
-          }
-        }
+      type: 'pie',
+      data: {
+          labels: ['활성 사용자', '비활성 사용자'],
+          datasets: [{
+              data: [activeUsers, inactiveUsers],
+              backgroundColor: [
+                  "#F28B30",
+                  "#6E6E6E",
+              ],
+          }]
       },
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function(context) {
-              const label = context.dataset.label || '';
-              const value = context.parsed.y;
-              return `${label}: ${(value * 100).toFixed(2)}%`;
-            }
+      options: {
+          responsive: true,
+          plugins: {
+              title: {
+                  display: true,
+                  text: '일일 활성 사용자 비율'
+              },
+              tooltip: {
+                  callbacks: {
+                      label: function(context) {
+                          const label = context.label || '';
+                          const value = context.raw;
+                          return `${label}: ${(value * 100).toFixed(2)}%`;
+                      }
+                  }
+              }
           }
-        },
-        title: {
-          display: true,
-          text: '일일 활성 사용자'
-        }
       }
-    }
   });
 }
 
 function drawDailyServiceUsageGraph(data) {
   const ctx = document.getElementById('service-usage-graph').getContext('2d');
   if (serviceUsageChart) {
-    serviceUsageChart.destroy();
+      serviceUsageChart.destroy();
   }
 
   serviceUsageChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: data.map(item => item.date),
-      datasets: [
-        {
-          label: 'Robot',
-          data: data.map(item => item.Robot),
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-        },
-        {
-          label: 'SmartRoutine',
-          data: data.map(item => item.SmartRoutine),
-          borderColor: 'rgb(255, 99, 132)',
-          tension: 0.1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: '사용량'
-          }
-        },
-        x: {
-          title: {
-            display: true,
-            text: '날짜'
-          }
-        }
+      type: 'bar',
+      data: {
+          labels: data.map(item => item.date),
+          datasets: [
+              {
+                  label: 'Robot',
+                  data: data.map(item => item.Robot),
+                  backgroundColor: '#F28B30'
+              },
+              {
+                  label: 'SmartRoutine',
+                  data: data.map(item => item.SmartRoutine),
+                  backgroundColor: '#C00000'
+              }
+          ]
       },
-      plugins: {
-        title: {
-          display: true,
-          text: '일일 서비스 사용량'
-        }
+      options: {
+          responsive: true,
+          scales: {
+              y: {
+                  beginAtZero: true,
+                  title: {
+                      display: true,
+                      text: '사용량'
+                  }
+              },
+              x: {
+                  title: {
+                      display: true,
+                      text: '날짜'
+                  }
+              }
+          },
+          plugins: {
+              title: {
+                  display: true,
+                  text: '일일 서비스 사용량'
+              }
+          }
       }
-    }
   });
 }
 
@@ -245,11 +247,9 @@ function drawAgeDistributionChart(data) {
     data: {
       labels: labels,
       datasets: [{
-        label: 'Number of Users',
+        label: '사용자수',
         data: counts,
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1
+        backgroundColor: '#F28B30'
       }]
     },
     options: {
@@ -259,20 +259,20 @@ function drawAgeDistributionChart(data) {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Number of Users'
+            text: '사용자수'
           }
         },
         x: {
           title: {
             display: true,
-            text: 'Age Group'
+            text: '나이'
           }
         }
       },
       plugins: {
         title: {
           display: true,
-          text: 'Age Distribution of Users'
+          text: '연령대별 사용자수'
         }
       }
     }

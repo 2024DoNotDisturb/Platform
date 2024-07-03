@@ -1,171 +1,237 @@
-/* dashboard.css */
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #131419;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    color: #f1f1f1;
+    height: 100vh;
+    margin: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #131419;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
-    letter-spacing: 1px;
+/* 헤더 */ 
+header {
+    background-color: #131419;
+    color: white;
+    font-weight: 600;
+    font-style: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1em 2em; */
+}
+
+.logo-image {
+    height: 7em;
+    width: 16em;
 }
 
 main {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-#graph-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 25px;
-    height: calc(100vh - 140px); /* 헤더와 푸터 높이를 고려하여 조정 */
-}
-
-.graph-item {
-    background-color: #f1f1f1;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-}
-
-.graph-item:hover {
-    transform: translateY(-5px);
-}
-
-h2 {
-    color: #F28B30;
-    margin-top: 0;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-/* 서비스별 구독자 추이 (좌측 전체, 더 크게) */
-.graph-item:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1 / 4;
-}
-
-/* 일일 활성 사용자 (우측 상단, 작게) */
-.graph-item:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-}
-
-/* 일일 서비스 사용량 (우측 중단, 작게) */
-.graph-item:nth-child(3) {
-    grid-column: 2;
-    grid-row: 2;
-}
-
-/* 연령대별 사용자 분포 (우측 하단) */
-.graph-item:nth-child(4) {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.controls {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 15px;
-    flex-wrap: nowrap; /* 한 줄로 강제 정렬 */
 }
 
-select, input[type="date"], button {
-    margin: 0 4px; /* 좌우 여백 줄임 */
-    padding: 6px 10px; /* 패딩 줄임 */
+@keyframes gentleShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 80%;
+    height: 80vh;
+}
+
+.button-grid button {
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 8px; /* 둥근 모서리 줄임 */
-    background-color: #454545;
-    color: #f1f1f1;
-    font-size: 11px; /* 폰트 크기 줄임 */
-    height: 30px; /* 높이 줄임 */
-    flex: 0 1 auto; /* flex-grow: 0, flex-shrink: 1, flex-basis: auto */
-}
-
-button {
-    background-color: #F28B30;
-    color: white;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    white-space: nowrap; /* 버튼 텍스트 줄바꿈 방지 */
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    position: relative;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
 }
 
-button:hover {
-    background-color: #e07a20;
-    transform: scale(1.05);
+.button-grid button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+    animation-fill-mode: none;
 }
 
-label {
-    margin-right: 3px;
-    font-size: 11px;
-    white-space: nowrap; /* 레이블 텍스트 줄바꿈 방지 */
+/* 호버 시 버튼 확장 */
+.robot-btn:hover, .routine-btn:hover { 
+    transform: scaleY(1.5);
+    transform-origin: bottom;
+    z-index: 1; 
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
-canvas {
-    max-width: 100%;
-    height: auto;
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 15px;
+.teamintro-btn:hover, .developintro-btn:hover, .serviceintro-btn:hover { 
+    transform: scaleY(1.5);
+    transform-origin: top;
+    z-index: 1; 
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
 }
 
-/* 메인 그래프(서비스별 구독자 추이)의 캔버스 크기 조정 */
-.graph-item:nth-child(1) canvas {
-    height: calc(100% - 80px); /* 그래프 아이템 내부 여백 고려 */
+/* 마이페이지 버튼 */
+.large-button {
+    grid-column: span 1;
+    grid-row: span 2;
+    background-image: url(../src/mypage-btn.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    animation-delay: 0s;
+    animation: gentleShake 0.3s ease-in;
 }
 
-/* 작은 그래프들의 캔버스 크기 조정 */
-.graph-item:nth-child(2) canvas,
-.graph-item:nth-child(3) canvas,
-.graph-item:nth-child(4) canvas {
-    height: calc(100% - 80px); /* 그래프 아이템 내부 여백 고려 */
+/* 마이페이지 버튼은 호버 시 확장이 없음 */
+.large-button:hover {
+    background-image: url(../src/mypage-btn-hover.png);
 }
 
+/* 로봇 서비스 버튼 */
+.robot-btn {
+    background-image:url(../src/robot-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.1s;
+}
 
-@media (max-width: 1024px) {
-    #graph-container {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
+/* 스마트 루틴 서비스 버튼 */
+.routine-btn {
+    background-image: url(../src/routine-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.2s;
+}
 
-    .graph-item:nth-child(1),
-    .graph-item:nth-child(2),
-    .graph-item:nth-child(3),
-    .graph-item:nth-child(4) {
-        grid-column: 1;
-        grid-row: auto;
-    }
+/* 서비스 연결 대기 버튼 */
+.wait-btn {
+    background-image: url(../src/wait-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.3s;
+}
 
-    .graph-item:nth-child(1) canvas {
-        height: 500px; /* 모바일에서 고정 높이 */
-    }
+.wait-btn:hover {
+    background-image: url(../src/wait-btn-hover.png);
+}
 
-    .graph-item:nth-child(2) canvas,
-    .graph-item:nth-child(3) canvas,
-    .graph-item:nth-child(4) canvas {
-        height: 300px; /* 모바일에서 작은 그래프 고정 높이 */
-    }
+/* 팀 소개 페이지 버튼 */
+.teamintro-btn {
+    background-image: url(../src/teamintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.4s;
+}
 
-    .controls {
-        flex-wrap: wrap; /* 모바일에서는 여러 줄로 허용 */
-        justify-content: flex-start;
-    }
+/* 개발자 소개 페이지 버튼 */
+.developintro-btn {
+    background-image: url(../src/developintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.5s;
+}
 
-    select, input[type="date"], button {
-        margin: 3px;
-        flex: 1 1 auto; /* 모바일에서 요소들이 늘어날 수 있게 함 */
-    }
+/* 서비스 소개 페이지 버튼 */
+.serviceintro-btn {
+    background-image: url(../src/serviceintro-btn.png);
+    animation: gentleShake 0.3s ease-in;
+    animation-delay: 0.6s;
+}
+
+/* 사용자 프로필 */
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.profile-image-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.user-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-name, .second-name {
+    display: inline-block;
+    margin: 0 2px; /* 칭호 사이의 간격 조절 */
+}
+
+/* .user-profile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+} */
+
+/* 로그아웃 버튼 */
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 300;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-btn:hover {
+    color: #F2B035;
+}
+
+/* 푸터 */
+footer {
+    background-color: #131419;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-style: normal;
 }
